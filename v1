@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Cookie Consent Popup</title>
+    <style>
+        :root {
+            --btn-accept-color: #2ecc71;
+            --btn-decline-color: #ff7675;
+            --btn-text-color: #fff;
+        }
+
+        .cookie-consent-popup {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            z-index: 1000;
+            max-width: 500px;
+            box-sizing: border-box;
+            display: none; /* Initially hidden */
+        }
+
+        #cookieConsentTitle {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .cookie-text {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .cookie-options {
+            margin: 20px 0;
+        }
+
+        .cookie-label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .cookie-toggle {
+            margin-left: 10px;
+        }
+
+        .cookie-actions {
+            display: flex;
+            justify-content: center;
+        }
+
+        .cookie-btn {
+            border: none;
+            color: var(--btn-text-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+
+        .cookie-btn:hover {
+            opacity: 0.8;
+        }
+
+        .cookie-btn:last-child {
+            margin-right: 0;
+        }
+
+        .decline {
+            background-color: var(--btn-decline-color);
+        }
+
+        .accept {
+            background-color: var(--btn-accept-color);
+        }
+
+        @media (max-width: 600px) {
+            .cookie-consent-popup {
+                width: calc(100% - 20px);
+                bottom: 10px;
+                left: 10px;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="cookie-consent-popup" id="cookieConsentPopup" role="dialog" aria-labelledby="cookieConsentTitle">
+        <h2 id="cookieConsentTitle">Customize your cookie preferences below.</h2>
+        <p class="cookie-text">We use cookies to improve your experience on our site...</p>
+        <div class="cookie-options">
+            <label class="cookie-label">
+                <input class="cookie-toggle" id="marketingCookies" type="checkbox" aria-label="Marketing Cookies"> Marketing Cookies
+            </label>
+            <label class="cookie-label">
+                <input class="cookie-toggle" id="analyticsCookies" type="checkbox" aria-label="Analytics Cookies"> Analytics Cookies
+            </label>
+        </div>
+        <div class="cookie-actions">
+            <button class="cookie-btn decline" id="denyButton">Decline</button>
+            <button class="cookie-btn accept" id="acceptButton">Accept</button>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var popup = document.getElementById("cookieConsentPopup");
+            var acceptButton = document.getElementById("acceptButton");
+            var denyButton = document.getElementById("denyButton");
+
+            // Show the popup after a delay (e.g., 2 seconds)
+            setTimeout(function() {
+                popup.style.display = 'block';
+            }, 2000);
+
+            acceptButton.addEventListener("click", function() {
+                popup.style.display = 'none';
+                // Handle acceptance logic here
+            });
+
+            denyButton.addEventListener("click", function() {
+                popup.style.display = 'none';
+                // Handle decline logic here
+            });
+        });
+    </script>
+</body>
+</html>
